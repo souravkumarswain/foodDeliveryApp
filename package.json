@@ -1,0 +1,31 @@
+{
+  "name": "fooddeliveryapp",
+  "version": "1.0.0",
+  "description": "practice react with creating food delivery app",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souravkumarswain/foodDeliveryApp.git"
+  },
+  "author": "sourav kumar swain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/souravkumarswain/foodDeliveryApp/issues"
+  },
+  "homepage": "https://github.com/souravkumarswain/foodDeliveryApp#readme",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "browserList": [
+    "last 2 versions",
+    "not dead"
+  ]
+}
