@@ -15,9 +15,18 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .header ul li {
+    cursor: pointer;
+}
+.login-button{
+    padding: 5px 10px;
+    background-color: #0eb67e;
+    border: none;
+    border-radius: 5px;
+    color: white;
     cursor: pointer;
 }
 .search-bar{
