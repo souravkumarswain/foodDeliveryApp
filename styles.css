@@ -55,3 +55,14 @@
     width: 100%;
     border-radius: 5px;
 }
+.search-and-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+.filter{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
