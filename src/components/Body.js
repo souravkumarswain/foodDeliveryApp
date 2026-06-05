@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
     const [resList, setResList] = useState([]);
     const[fetchedResList, setFetchedResList] = useState([]);
+    const [searchText, setSearchText]= useState("");
     
     useEffect(()=>{
         fetchData();
@@ -19,12 +20,18 @@ const Body = () => {
     
     const handleChange = (event) => {
         if (event.target.value === "best_rated") {
-            let filteredList = resList.filter((res) => res.info.avgRating >= 4);
+            let filteredList = fetchedResList.filter((res) => res.info.avgRating >= 4.2);
             setResList(filteredList);
         } if(event.target.value === "all"){ 
             setResList(fetchedResList);
         }
     };
+
+    const handleOnClickSearch = () => {
+        let filteredList = fetchedResList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+        setResList(filteredList);
+        setSearchText("");
+    }
 
     if(resList.length === 0){
         return <Shimmer/>
@@ -32,11 +39,16 @@ const Body = () => {
 
     return <>
         <div className="search-and-filter">
-            <input className="search-bar" type="text" placeholder="Search your Food.."></input>
+            <div className="search-container">
+                <input className="search-bar" type="text" placeholder="Search your food.." value={searchText} 
+                onChange = {(e) => setSearchText(e.target.value)}></input>
+                <button className="login-button" onClick = {handleOnClickSearch}>Search</button>
+            </div>
 
             <div className="filter">
                 <label htmlFor="sorting-filter">Sort By:</label>
                 <select id="sorting-filter" onChange={handleChange}>
+                    <option value="">Select</option>
                     <option value="all">All Restaurants</option>
                     <option value="best_rated">Best Rated</option>
                 </select>
