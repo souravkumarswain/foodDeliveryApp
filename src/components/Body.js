@@ -1,26 +1,29 @@
 import { useState,useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router"
 
 const Body = () => {
     const [resList, setResList] = useState([]);
     const[fetchedResList, setFetchedResList] = useState([]);
     const [searchText, setSearchText]= useState("");
+    const [errorMsg, setErrMSg] = useState("");
     
     useEffect(()=>{
         fetchData();
     },[])
 
     const fetchData = async () => {
-        let data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=17.4700319&lng=78.3534174&carousel=true&third_party_vendor=1");
+        let data = await fetch("https://fakerestaurantapi.runasp.net/api/Restaurant");
         let json = await data.json();
-        setFetchedResList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setResList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json)
+        setFetchedResList(json);
+        setResList(json);
     }
     
     const handleChange = (event) => {
-        if (event.target.value === "best_rated") {
-            let filteredList = fetchedResList.filter((res) => res.info.avgRating >= 4.2);
+        if (event.target.value === "parking_lot") {
+            let filteredList = fetchedResList.filter((res) => res.parkingLot === true);
             setResList(filteredList);
         } if(event.target.value === "all"){ 
             setResList(fetchedResList);
@@ -28,8 +31,9 @@ const Body = () => {
     };
 
     const handleOnClickSearch = () => {
-        let filteredList = fetchedResList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-        setResList(filteredList);
+        let filteredList = fetchedResList.filter((res) => res.restaurantName.toLowerCase().includes(searchText.toLowerCase()));
+        filteredList.length === 0 ? setTimeout(() => setErrMSg('No Restaurant Found !!'), 1000) && setTimeout(() => setErrMSg(''), 4000) : setErrMSg("");
+        setResList(filteredList?.length > 0 ? filteredList : fetchedResList);
         setSearchText("");
     }
 
@@ -40,25 +44,29 @@ const Body = () => {
     return <>
         <div className="search-and-filter">
             <div className="search-container">
-                <input className="search-bar" type="text" placeholder="Search your food.." value={searchText} 
+                <input className="search-bar" type="text" placeholder="Search your Restaurant.." value={searchText} 
                 onChange = {(e) => setSearchText(e.target.value)}></input>
                 <button className="login-button" onClick = {handleOnClickSearch}>Search</button>
             </div>
-
             <div className="filter">
                 <label htmlFor="sorting-filter">Sort By:</label>
                 <select id="sorting-filter" onChange={handleChange}>
                     <option value="">Select</option>
                     <option value="all">All Restaurants</option>
-                    <option value="best_rated">Best Rated</option>
+                    <option value="parking_lot">Restaurant with Parking Lot</option>
                 </select>
             </div>
+        </div>
+        <div>
+            {errorMsg && <h2>{errorMsg}</h2>}
         </div>
 
         <div className="restaurant-list">
             {
                 resList.map((restaurant) => {
-                    return <RestaurantCard key={restaurant.info.id} restaurant={restaurant} />
+                    return <Link to={`/rescard/${restaurant.restaurantID}`} key={restaurant.restaurantID}>
+                        <RestaurantCard restaurant={restaurant} />
+                    </Link>
                 })
             }
         </div>

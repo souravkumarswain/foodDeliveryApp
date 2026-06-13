@@ -1,15 +1,13 @@
-import {RES_LOGO_URL} from "../utils/constants";
 
 const RestaurantCard =(props) => {
     const {restaurant} = props;
-    const{name, cloudinaryImageId, cuisines,avgRating, costForTwo} = restaurant?.info
+    const{restaurantName, address, type, parkingLot} = restaurant
     return <>
     <div className="restaurant-card">
-        <img src={RES_LOGO_URL+cloudinaryImageId} alt="Restaurant"/>
-        <h3>{name}</h3>
-        <p>{cuisines.join(", ")}</p>
-        <p>{avgRating}</p>
-        <p>{costForTwo}</p>
+        <h1>{restaurantName}</h1>
+        <p>{address}</p>
+        <p>{type}</p>
+        <p>{parkingLot ? "Has Parking Lot" : "No Parking Lot"}</p>
         <button>Order Now</button>
     </div>
     </>
