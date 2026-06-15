@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
-import { ITEM_LOGO_URL } from "../utils/constants";
 import { useParams } from "react-router";
+import useFetchMenu from "../utils/useFetchMenu";
 
 const RestaurantMenu = () =>{
-    const [resMenu, setResMenu] = useState([])
     const {resid} = useParams()
-
-    useEffect(() => {
-        fetchData()
-    },[])
-
-    const fetchData = async() =>{
-        let data = await fetch(`${ITEM_LOGO_URL}${resid}/menu`);
-        let json = await data.json();
-        setResMenu(json);
-    }
+    const resMenu = useFetchMenu(resid);
 
     return (
         <>

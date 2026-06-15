@@ -32,5 +32,12 @@
                         4. always use useState / useEffect inside component. 
 
 # using ReactRouterDom: 
-                        1. to install : npm i react-router-dom
-                        2. import 
+                        1. to install : npm i react-router
+                        2. import createBrowserRouter, RouterProvider in App.js and structure the path element errorElement children accordingly. 
+
+# uses of custom hook: 
+                        1. custom hook is a concept of react where user can create own custom hook function to satisfy some specific requirement. Its a reusable JS function that carries stateful logics and its side effects so that it can be shared over multiple components. 
+                        2. Custom hook name always starts with lowercase 'use' key word. 
+                        3. Benefits: a. Reusablity of code
+                                     b. Components roles will be clean, component will carry single single responsibility
+                                     c. Easier Testing. 
