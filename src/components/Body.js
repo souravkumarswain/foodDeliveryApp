@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router"
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [resList, setResList] = useState([]);
@@ -20,7 +21,7 @@ const Body = () => {
         setFetchedResList(json);
         setResList(json);
     }
-    
+
     const handleChange = (event) => {
         if (event.target.value === "parking_lot") {
             let filteredList = fetchedResList.filter((res) => res.parkingLot === true);
@@ -35,6 +36,11 @@ const Body = () => {
         filteredList.length === 0 ? setTimeout(() => setErrMSg('No Restaurant Found !!'), 1000) && setTimeout(() => setErrMSg(''), 4000) : setErrMSg("");
         setResList(filteredList?.length > 0 ? filteredList : fetchedResList);
         setSearchText("");
+    }
+
+    const onlineStatus = useOnlineStatus();
+    if(onlineStatus ===  false) {
+        return <h1>No Internet Connection!!</h1>;
     }
 
     if(resList.length === 0){
