@@ -44,6 +44,6 @@
 
 # Lazy Loading : AKA - Dynamic Import, Code splitting, chunking 
                 1. Lazy loading comes into picture when we have diff components of app which is not required at the same time. technically to split the bundler.js and make the app faster by spliting bundler. 
-                2. for Lazy loading we need to import {Lazy and Suspense} named coponent from React.
-                3. Lazy(() => import("the component path")) syntax for Lazy Loading
+                2. for Lazy loading we need to import {lazy and Suspense} named component from React.
+                3. lazy(() => import("the component path")) syntax for lazy Loading
                 4. <Suspense fallaback = {<h1>Shimmer can be used here</h1>}><Compoent></Suspense>

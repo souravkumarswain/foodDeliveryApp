@@ -7,6 +7,8 @@ import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import { lazy, Suspense } from "react";
+import Shimmer from "./src/components/Shimmer";
 
 
 const DeliveryAppLayout = () => {
@@ -17,6 +19,8 @@ const DeliveryAppLayout = () => {
         {/* <Footer/> */}
     </>
 }
+
+const DineIn = lazy(() => import ("./src/components/DineIn"))
 
 const application = createBrowserRouter([
     {
@@ -34,6 +38,10 @@ const application = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />
+            },
+            {
+                path: '/dinein',
+                element: <Suspense fallback = {<Shimmer />}><DineIn /></Suspense>
             },
             {
                 path:'/rescard/:resid',
