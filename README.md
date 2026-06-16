@@ -37,7 +37,13 @@
 
 # uses of custom hook: 
                         1. custom hook is a concept of react where user can create own custom hook function to satisfy some specific requirement. Its a reusable JS function that carries stateful logics and its side effects so that it can be shared over multiple components. 
-                        2. Custom hook name always starts with lowercase 'use' key word. 
+                        2. Custom hook name always starts with lowercase 'use' key word. Ex: useOnlineStatus.js
                         3. Benefits: a. Reusablity of code
                                      b. Components roles will be clean, component will carry single single responsibility
                                      c. Easier Testing. 
+
+# Lazy Loading : AKA - Dynamic Import, Code splitting, chunking 
+                1. Lazy loading comes into picture when we have diff components of app which is not required at the same time. technically to split the bundler.js and make the app faster by spliting bundler. 
+                2. for Lazy loading we need to import {Lazy and Suspense} named coponent from React.
+                3. Lazy(() => import("the component path")) syntax for Lazy Loading
+                4. <Suspense fallaback = {<h1>Shimmer can be used here</h1>}><Compoent></Suspense>

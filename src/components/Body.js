@@ -1,26 +1,26 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import useFetchRestaurant from "../utils/useFetchRestaurant";
 
 const Body = () => {
+    const fetchedResList = useFetchRestaurant();
+    const masterList = fetchedResList?.[0] || [];
+
     const [resList, setResList] = useState([]);
-    const[fetchedResList, setFetchedResList] = useState([]);
     const [searchText, setSearchText]= useState("");
     const [errorMsg, setErrMSg] = useState("");
-    
-    useEffect(()=>{
-        fetchData();
-    },[])
 
-    const fetchData = async () => {
-        let data = await fetch("https://fakerestaurantapi.runasp.net/api/Restaurant");
-        let json = await data.json();
-        console.log(json)
-        setFetchedResList(json);
-        setResList(json);
-    }
+    useEffect(() => {
+        if(masterList.length > 0){
+            setResList(masterList)
+        }
+    },[fetchedResList]) 
+
+    //for initial rendering fetchedResList comes as empty array so we can not directly assign the array
+    // value to resList. So here again useEffect is used to update the state when the data is fetched
 
     const handleChange = (event) => {
         if (event.target.value === "parking_lot") {
