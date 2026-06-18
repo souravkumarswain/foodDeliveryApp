@@ -47,3 +47,5 @@
                 2. for Lazy loading we need to import {lazy and Suspense} named component from React.
                 3. lazy(() => import("the component path")) syntax for lazy Loading
                 4. <Suspense fallaback = {<h1>Shimmer can be used here</h1>}><Compoent></Suspense>
+
+# Higher order Component: It is a function which takes the component as argument, enhance it and return a component. 

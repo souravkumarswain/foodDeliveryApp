@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {restaurantWithPromo} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -38,6 +38,8 @@ const Body = () => {
         setSearchText("");
     }
 
+    const PromotedRestaurant = restaurantWithPromo(RestaurantCard); //Higher Order Function
+
     const onlineStatus = useOnlineStatus();
     if(onlineStatus ===  false) {
         return <h1>No Internet Connection!!</h1>;
@@ -71,7 +73,7 @@ const Body = () => {
             {
                 resList.map((restaurant) => {
                     return <Link to={`/rescard/${restaurant.restaurantID}`} key={restaurant.restaurantID}>
-                        <RestaurantCard restaurant={restaurant} />
+                        {restaurant.parkingLot ? <PromotedRestaurant restaurant={restaurant}/> : <RestaurantCard restaurant={restaurant} />}                       
                     </Link>
                 })
             }
