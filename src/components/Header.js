@@ -8,18 +8,18 @@ const Header = () =>{
     const onlineStatus = useOnlineStatus();
 
     return <>
-        <div className = "header">
-            <div className="logo">
+        <div className = "flex justify-between items-center p-4 bg-gradient-to-r from-purple-100 to-purple-300 border-b border-gray-300">
+            <div className="w-1/6 rounded-xl overflow-hidden">
                 <img src= {LOGO_URL}  alt="Logo"/>
             </div>
-            <ul>
-                <li>Status: {onlineStatus ? "🟢" : "🔴"}</li>
-                <li><Link to='./'>Home</Link></li>
-                <li><Link to='./about'>About</Link></li>
-                <li><Link to='./contact'>Contact</Link></li>
-                <li><Link to='./dinein'>DineIn</Link></li>
-                <button className = "login-button" onClick= {()=> {
-                    btnReact === "Login" ? setBtnReact("Logout") : setBtnReact("Login")
+            <ul className="flex items-center space-x-4">
+                <li className="font-bold text-gray-600">Status: {onlineStatus ? "🟢" : "🔴"}</li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./'>Home</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./about'>About</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./contact'>Contact</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./dinein'>DineIn</Link></li>
+                <button className = "bg-yellow-500 text-white p-2 rounded-lg w-24 h-10 text-center hover:bg-green-500" 
+                onClick= {()=> {btnReact === "Login" ? setBtnReact("Logout") : setBtnReact("Login")
                 }}>{btnReact}</button>
             </ul>
         </div>
