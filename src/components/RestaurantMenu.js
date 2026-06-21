@@ -14,6 +14,7 @@ const RestaurantMenu = () => {
     const [isNonVeg, setIsNonVeg] = useState(false);
     const [allDishes, setAllDishes] = useState(true);
     const [filteredMenu, setFilteredMenu] = useState();
+    const [itemIndex, setItemIndex] = useState(0); 
     
 
     useEffect(() => {
@@ -78,8 +79,8 @@ const RestaurantMenu = () => {
             <div>
                 <div>
                     <ul>
-                        {filteredMenu?.map((category)=>{
-                            return <li key={category.collection_id}><RestaurantCategory category={category} /></li>
+                        {filteredMenu?.map((category,index)=>{
+                            return <li key={category.collection_id}><RestaurantCategory category={category} showItems = {index === itemIndex ? true : false} setShowIndex={() => setItemIndex(index)}/></li>
                         })}
                     </ul>
                 </div>
