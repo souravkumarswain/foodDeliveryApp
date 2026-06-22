@@ -51,3 +51,8 @@
 # Higher order Component: It is a function which takes the component as argument, enhance it and return a component. 
 
 # Controlled Component : an input element whose value is completely driven by React state, rather than the DOM. Here state is uplifted from RestaurantCategory to RestaurantMenu and now carrds can be controlled from parent components. 
+
+# reactContext- It avoids props drilling. global state can be used anywhere in the application to avoid unwanted passing of props through children components. 
+                1. created UserContext which holds createContext
+                2. wrapped App.js with UserContext and set a default value using useState
+                3. in body.js useContext used to manipulate and use state.

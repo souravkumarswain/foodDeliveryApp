@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     const [fetchedResList, setFetchedResList] = useState([])
     const [resList, setResList] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [errorMsg, setErrMSg] = useState("");
+    const {name, setName} = useContext(UserContext)
+    const [typedName, setTypedName] = useState('Pradhan');
 
     useEffect(() => {
         fetchData();
@@ -29,6 +32,13 @@ const Body = () => {
         setSearchText("");
     }
 
+    const onClickEnter = (e) => {
+        if(e.key === 'Enter'){
+            {setName(e.target.value)}
+            setTypedName('')
+        }
+    }
+
     const onlineStatus = useOnlineStatus();
     if (onlineStatus === false) {
         return <h1>No Internet Connection!!</h1>;
@@ -44,6 +54,9 @@ const Body = () => {
                 <input className="border border-gray-300 p-2 rounded-md" type="text" placeholder="Search your Restaurant.." value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}></input>
                 <img className="w-6 h-6 cursor-pointer grayscale-400 hover:grayscale-0 transition-all duration-300" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" onClick={handleOnClickSearch} />
+            </div>
+            <div>
+                <input  value={typedName} type='text' className="border border-gray-600 p-1" onChange={(e) => setTypedName(e.target.value)} onKeyDown={onClickEnter}></input>
             </div>
         </div>
         <div>

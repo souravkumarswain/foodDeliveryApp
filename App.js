@@ -7,15 +7,19 @@ import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import RestaurantMenu from "./src/components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import Shimmer from "./src/components/Shimmer";
+import UserContext from "./src/utils/UserContext";
 
 
 const DeliveryAppLayout = () => {
-    return <>
-        <Header />
-        <Outlet />
+    const [name, setName] = useState('jewel');
 
+    return <>
+    <UserContext value={{name,setName}}>
+        <Header /> 
+        <Outlet />
+    </UserContext> 
         {/* <Footer/> */}
     </>
 }
