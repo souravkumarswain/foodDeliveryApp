@@ -56,3 +56,19 @@
                 1. created UserContext which holds createContext
                 2. wrapped App.js with UserContext and set a default value using useState
                 3. in body.js useContext used to manipulate and use state.
+
+# redux-toolkit - Redux is used as a library to keep tracking of state changes. It is outside of react. 
+            1. to install- npm i @reduxjs/toolkit react-redux (both need to be installed)
+            2. WF : 
+
+            add to cart clicked ➡️ Action Dispatch ➡️ reducer function ➡️ redux library Slices
+                                                                                               
+                           ⤴️  selector used to subscribing to the store       ↩️
+
+            steps to be followed -
+            1. installation of react redux and tool kit
+            2. create store in utils by importing {configureStore} from @reduxjs/toolkit
+            3. import {Provider} from react-redux and wrap store the whole app in app.js
+            4. Action dispatch
+            5. reducer function
+            6. selector

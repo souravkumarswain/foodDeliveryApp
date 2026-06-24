@@ -1,8 +1,15 @@
+import { useDispatch } from "react-redux";
 import { VEG_LOGO, NON_VEG_LOGO, RATING_STAR } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { addItem } from "../utils/cartSlice";
 
 const ItemCard = (props) => {
     const { product_name, small_description, rating, price, is_veg, image_es } = props.items;
+    const dispatch = useDispatch()
+
+    const onClickAdd = () => {
+        dispatch(addItem('Nan'))
+    }
 
     // const products = Array.isArray(props?.items?.products) ? props.items.products : [];
 
@@ -26,7 +33,7 @@ const ItemCard = (props) => {
                     <hr className="my-2 -ml-4 -mr-4 opacity-10" />
                     <div className="flex justify-between items-center h-10">
                         <p className="font-bold text-lg">₹ {price}</p>
-                        <button className="bg-transparent border border-indigo-500 text-indigo-500 p-2 rounded-md hover:border-green-500 hover:text-green-500 w-24">Add</button>
+                        <button onClick = {onClickAdd}className="bg-transparent border border-indigo-500 text-indigo-500 p-2 rounded-md hover:border-green-500 hover:text-green-500 w-24">Add</button>
                     </div>
 
                 </div>

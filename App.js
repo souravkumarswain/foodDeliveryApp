@@ -10,16 +10,20 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import { lazy, Suspense, useState } from "react";
 import Shimmer from "./src/components/Shimmer";
 import UserContext from "./src/utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore";
 
 
 const DeliveryAppLayout = () => {
     const [name, setName] = useState('jewel');
 
     return <>
+    <Provider store={appStore}>
     <UserContext value={{name,setName}}>
         <Header /> 
         <Outlet />
     </UserContext> 
+    </Provider>
         {/* <Footer/> */}
     </>
 }

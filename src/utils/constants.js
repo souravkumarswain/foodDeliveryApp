@@ -1,4 +1,4 @@
-export const LOGO_URL = "https://www.clipartmax.com/png/middle/111-1118804_android-food-delivery-apps.png";
+export const LOGO_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesQEI0OcL_ohEqwUUm8teZ__LqwQN1rOLZL3saCMggnjtc5QifnCShnA&s=10";
 export const RES_LOGO_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 export const ITEM_MENU_URL = "https://www.eatsure.com/v1/api/get_all_products/brand_id/";
 export const VEG_LOGO = "https://www.clipartmax.com/png/middle/206-2065891_soups-and-salads-veg-logo-png.png"
