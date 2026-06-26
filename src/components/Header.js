@@ -19,20 +19,22 @@ const Header = () => {
             </div>
             <ul className="flex items-center space-x-4">
                 <li className="font-bold text-gray-600">Status: {onlineStatus ? "🟢" : "🔴"}</li>
-                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./'>Home</Link></li>
-                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./about'>About</Link></li>
-                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./contact'>Contact</Link></li>
-                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='./dinein'>DineIn</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='/'>Home</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='/about'>About</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='/contact'>Contact</Link></li>
+                <li className="font-bold text-gray-600 hover:text-yellow-800"><Link to='/dinein'>DineIn</Link></li>
                 <div className="relative">
+                    <Link to='/cart'>
                     <img className="w-8 bg-transparent" src="https://www.freeiconspng.com/uploads/cart-icon-14.png" alt="cart"/>
                     <label className=" absolute w-5 h-5 text-center -left-1 -top-2 text-sm font-bold bg-green-600 rounded-full">{items.length}</label>
+                    </Link>
                 </div>
                 <div>
                     <button className="bg-yellow-500 text-white p-2 rounded-lg w-24 h-10 text-center hover:bg-green-500"
                         onClick={() => {
                             btnReact === "Login" ? setBtnReact("Logout") : setBtnReact("Login")
                         }}>{btnReact}</button>
-                    <li className="font-bold text-gray-600">{name}</li>
+                    <li className="font-bold text-gray-600 text-center">{name}</li>
                 </div>
             </ul>
         </div>
