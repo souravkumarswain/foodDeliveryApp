@@ -57,7 +57,7 @@
                 2. wrapped App.js with UserContext and set a default value using useState
                 3. in body.js useContext used to manipulate and use state.
 
-# redux-toolkit - Redux is used as a library to keep tracking of state changes. It is outside of react. 
+# redux-toolkit - Redux is used as a library to keep tracking of state changes. It is outside of react. Behind the scene Redux is using Immer state management library. Competitors are Zustance and React-Context.   
             1. to install- npm i @reduxjs/toolkit react-redux (both need to be installed)
             2. WF : 
 
@@ -72,3 +72,15 @@
             4. Action dispatch
             5. reducer function
             6. selector
+
+# Testing : two types of testing developers do
+1. Unit testing
+2. Integration testing
+
+React has its own react-testing-library, react testing library is developed on top of dom-testing library. behind the scnene libraries are uring jest. 
+
+set up:
+ 1. install react-testing-library
+ 2. install jest
+ 3. configure babel in root level
+ 4. configuration to override parcel babel config
